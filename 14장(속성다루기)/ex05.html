@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>애니메이션 뷰어 프로그램</title>
+  <style>
+    body{
+      text-align: center;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    //내가 짠 코드
+    var imgNum = 1;
+    var timerId = 0;
+    $(document).ready(function(){
+      var view = $('#view')
+      var mode = 'play';
+      $('.nav button').click(function(){
+        mode = $(this).attr('id')
+
+        if(mode == 'play'){
+          play()
+        } else if(mode === 'stop'){
+          stop()
+        }else if(mode === 'prev'){
+          stop()
+          prev()
+        }else if(mode === 'next'){
+          stop()
+          next()
+        }
+      })
+    })
+
+    function play(){
+      if(timerId == 0){
+        timerId = setInterval(next, 100)
+      }
+    }
+
+    function stop(){
+      if(timerId != 0){
+        clearInterval(timerId)
+        timerId = 0
+      }
+    }
+
+    function prev(){
+      imgNum--;
+      if(imgNum === 0){
+        imgNum = 60
+      }
+      $('#view').attr('src', "images/"+imgNum+".jpg")
+    }
+    
+    function next (){
+      $('#view').attr('src', "images/"+imgNum+".jpg")
+      imgNum++
+      if(imgNum === 60){
+        imgNum = 1
+      }
+    }
+    
+
+  </script>
+  <!-- <script src="js/animation.js"></script> -->
+</head>
+<body>
+  <div class="panel">
+    <img src="images/1.jpg" id="view" alt="">
+  </div>
+  <div class="nav">
+    <button id="play">play</button>
+    <button id="stop">stop</button>
+    <button id="prev">prev</button>
+    <button id="next">next</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery를 활용한 물고기 랜덤으로 움직이기</title>
+  <style>
+    #panel{
+      width: 600px;
+      height: 400px;
+      border: 2px solid red;
+      position: relative;
+    }
+    #fish{
+      position: absolute;
+      left: 250px;
+      top: 150px;
+      width: 100px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var panel = $('#panel')
+      var fish = $('#fish')
+
+      var panelWidth = parseInt(panel.css('width'))
+      var panelheight = parseInt(panel.css('height'))
+
+      panelWidth = panelWidth - parseInt(fish.css('width'))
+      panelheight = panelheight - parseInt(fish.css('height'))
+
+      $('#btnStart').click(function(){
+        var left = parseInt(Math.random() * panelWidth)
+        var top = parseInt(Math.random() * panelheight)
+
+        fish.css({
+          left: left,
+          top, top
+        })
+      })
+    })
+  </script>
+</head>
+<body>
+  <button id="btnStart">물고기 움직이기</button>
+  <div id="panel">
+    <img src="images/fish.png" id="fish">
+  </div>
+</body>
+</html>

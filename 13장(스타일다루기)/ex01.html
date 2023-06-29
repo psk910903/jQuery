@@ -29,13 +29,21 @@
     // }
 
     //jquery로 스타일 접근
+    // $(document).ready(function(){
+    //   var content = $("#test")
+    //   //jQuery로 스타일에 접근할 때는 CSS()만 사용하면 내외부 상관없이 바로 값을 얻어 낼 수 있다.
+    //   console.log("color = ", content.css('color'))
+    //   console.log("border = ", content.css('border'))
+    //   console.log("font-size = ", content.css('font-size'))
+    //   console.log("margin = ", content.css('margin'))
+    // })
+
     $(document).ready(function(){
-      var content = $("#test")
-      //jQuery로 스타일에 접근할 때는 CSS()만 사용하면 내외부 상관없이 바로 값을 얻어 낼 수 있다.
-      console.log("color = ", content.css('color'))
-      console.log("border = ", content.css('border'))
-      console.log("font-size = ", content.css('font-size'))
-      console.log("margin = ", content.css('margin'))
+      var item = $('#test')
+      console.log("color = " + item.css('color'))
+      console.log("border = " + item.css('border'))
+      console.log("fontSize = " + item.css('fontSize'))
+      console.log("margin = " + item.css('margin'))
     })
   </script>
 </head>

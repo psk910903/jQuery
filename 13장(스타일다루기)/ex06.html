@@ -24,14 +24,11 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function(){
-      var item = $(".menu li.select")
-      $("#exec").click(function(){
-        //폰트 사이즈 값을 가져와서 숫자로 바꾸는 함수
-        var fontSize = parseInt(item.css("fontSize"))
-        // console.log(fontSize)
-
-        //폰트 크기를 설정하는데 클릭할 때마다 1씩 증가 된다.
-        item.css("fontSize", fontSize +1)
+      var item = $('.menu li.select')
+      $('#exec').click(function(){
+        var size = parseInt(item.css('fontSize'))
+        
+        item.css('fontSize', size+1)
       })
     })
   </script>

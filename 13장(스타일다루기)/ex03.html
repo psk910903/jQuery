@@ -23,14 +23,23 @@
     //   content.style.margin= "50px"
     // }
 
-    //jQuery로 스타일 접근
+    // //jQuery로 스타일 접근
+    // $(document).ready(function(){
+    //   var content = $("#test")
+    //   //jQuery로 여러 스타일 속성값을 변경하고자 한다면 css()로 한번에 묶어서 속성값을 변경할 수 있다.
+    //   content.css({
+    //     fontSize : "12px",
+    //     border : "5px solid black",
+    //     margin : "50px"})    
+    // })
+
     $(document).ready(function(){
-      var content = $("#test")
-      //jQuery로 여러 스타일 속성값을 변경하고자 한다면 css()로 한번에 묶어서 속성값을 변경할 수 있다.
+      var content = $('#test')
       content.css({
-        fontSize : "12px",
-        border : "5px solid black",
-        margin : "50px"})    
+        fontSize: 8,
+        border: "1px solid black",
+        margin: 50
+      })
     })
   </script>
 </head>

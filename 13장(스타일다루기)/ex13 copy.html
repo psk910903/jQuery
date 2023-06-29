@@ -1,0 +1,53 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery를 활용한 글자의 랜덤 크키 및 랜덤 색상 출력</title>
+  <style>
+    #panel{
+      width: 600px;
+      overflow: visible;
+      border: 2px solid red;
+      font-size: 20px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    var cnt =0;
+    var panel = null;
+
+    $(document).ready(function(){
+      init()
+      start()
+    })
+
+    function init(){
+      panel = $('#panel')
+    }
+    function start(){
+      setInterval(addTag, 1000)
+    }
+
+    function addTag(){
+      var color = '#' + (parseInt(Math.random() * 0xffffff)).toString(16)
+      var size = 10 + parseInt(Math.random() * 40)
+      var span = $('<span></span>')
+
+      cnt++
+      span.html(cnt)
+      span.css({
+        color: color,
+        fontSize: size,
+        display: 'inline-block'
+      })
+      panel.append(span)
+      
+    }
+  </script>
+</head>
+<body>
+  <div id="panel">
+    
+  </div>
+</body>
+</html>

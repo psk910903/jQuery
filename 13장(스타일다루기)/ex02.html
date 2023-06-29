@@ -22,14 +22,22 @@
     // }
 
     //jQuery로 스타일 접근
-    $(document).ready(function(){
-      var content = $("#test")
+    // $(document).ready(function(){
+    //   var content = $("#test")
       
-      //jQuery로 스타일 속성이름에 관계없이 그대로 사용해도 무방하다.
-      //둘 다 적용가능
-      // content.css('fontSize', "12px")    
-      content.css('font-size', "12px")    
+    //   //jQuery로 스타일 속성이름에 관계없이 그대로 사용해도 무방하다.
+    //   //둘 다 적용가능
+    //   // content.css('fontSize', "12px")    
+    //   content.css('font-size', "12px")    
+    // })
+
+    $(document).ready(function(){
+      var content = $('#test')
+      console.log("font-size = " + content.css('font-size'))
+      console.log("fontSize = " + content.css('fontSize'))
     })
+
+
   </script>
 </head>
 <body>

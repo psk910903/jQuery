@@ -28,10 +28,22 @@
       console.log("font-size = ", $(".menu li").css("font-size"))
 
       var content = $(".menu").css(["width", "height", "margin", "color"])
-      console.log("width = " + content.width + 
-      ", height = " + content.height + 
-      ", margin = "+ content.margin +
-      ", color = " + content.color)
+      console.log(
+        "width = " + content.width + 
+        ", height = " + content.height + 
+        ", margin = "+ content.margin +
+        ", color = " + content.color)
+    })
+
+    $(document).ready(function(){
+      console.log("fontSize = " + $('.menu li').css('fontSize'))
+
+      var content2 = $('.menu').css(['width', 'height', 'margin', 'color'])
+      console.log(content2.width)
+      console.log(content2.height)
+      console.log(content2.margin)
+      console.log(content2.color)
+
     })
   </script>
 </head>
