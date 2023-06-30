@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>크기 다루기 (이동)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      font-size: 20px;
+    }
+    
+    #parent1{
+      position: absolute;
+      border: 1px solid black;
+      width: 550px;
+      height: 400px;
+      left: 50px;
+      top: 50px;
+    }
+    #fish{
+      position: absolute;
+      padding: 30px;
+      margin: 50px;
+      left: 50px;
+      top: 100px;
+      border: 20px solid red;
+      width: 120px;
+      height: 70px;
+    }
+    #move{
+      position: absolute;
+      left: 50px;
+      top: 30px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var fish = $('#fish')
+      var parent = $('#parent1')
+      
+      //move에 클릭 이벤트 등록
+      $('#move').click(function(){
+        //물고기가 이동할 x좌표를 구하고 있는 코드
+        var endX = parent.innerWidth() - fish.outerWidth() - ((fish.outerWidth(true) - fish.outerWidth()) /2)
+        fish.css('left', endX)
+      })
+    })
+  </script>
+</head>
+<body>
+  <button id="move">이동</button>
+  <div id="parent1">
+    <img src="images/fish.png" id="fish">
+  </div>
+</body>
+</html>
