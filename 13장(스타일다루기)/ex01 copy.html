@@ -1,0 +1,56 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 VS jquery 스타일 다루기 1</title>
+  <style>
+    div {
+      margin: 20px;
+      padding: 10px;
+      font-size: 26px;
+      border: 2px solid red;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    // //자바스크립트로 스타일 접근
+    // window.onload = function() {
+    //   var content = document.getElementById("test")
+    //   //color는 인라인 속성이어서 바로 접근을 해서 값을 얻을 수 있다.
+    //   console.log('color = ' + content.style.color)
+    //   //하지만 아래 3가지의 경우는 외부속성이라서 접근해서 값을 얻을 수 없다.
+    //   console.log('fontSize = ' + content.style.fontSize)
+    //   console.log('border = ' + content.style.border)
+    //   console.log('margin = ' + content.style.margin)
+    //   //getComputedStyle()를 이용하여 내,외부 스타일 속성에 접근하여 출력할 수 있다.
+    //   console.log('border = ' + window.getComputedStyle(content).border)
+    //   console.log('fontSize = ' + window.getComputedStyle(content).fontSize)
+
+    // }
+
+    //jquery로 스타일 접근
+    // $(document).ready(function(){
+    //   var content = $("#test")
+    //   //jQuery로 스타일에 접근할 때는 CSS()만 사용하면 내외부 상관없이 바로 값을 얻어 낼 수 있다.
+    //   console.log("color = ", content.css('color'))
+    //   console.log("border = ", content.css('border'))
+    //   console.log("font-size = ", content.css('font-size'))
+    //   console.log("margin = ", content.css('margin'))
+    // })
+
+    $(document).ready(function(){
+      var test = $('#test')
+      console.log('color : ' + test.css('color'))
+      console.log('fontSize : ' + test.css('fontSize'))
+      console.log('border : ' + test.css('border'))
+      console.log('margin : ' + test.css('margin'))
+    })
+  </script>
+</head>
+<body>
+  <div id="test" class="content" style="color: blue;">
+    스타일 다루기
+  </div>
+  
+</body>
+</html>

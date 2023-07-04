@@ -19,26 +19,31 @@
   </style>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script>
-    $(document).ready(function(){
-      var panel = $('#panel')
+    window.onload = function(){
+      //물고기 노드 구하기
       var fish = $('#fish')
 
-      var panelWidth = parseInt(panel.css('width'))
-      var panelheight = parseInt(panel.css('height'))
-
-      panelWidth = panelWidth - parseInt(fish.css('width'))
-      panelheight = panelheight - parseInt(fish.css('height'))
-
+      //패널의 너비와 높이를 구하기
+      var panelWidth = $('#panel').width()
+      var panelHeight = $('#panel').height()
+      
+      //물고기가 최대로 움직일 영역을 구하기
+      var panelX = panelWidth - fish.width()
+      var panelY = panelHeight - fish.height()
+      
       $('#btnStart').click(function(){
-        var left = parseInt(Math.random() * panelWidth)
-        var top = parseInt(Math.random() * panelheight)
-
+        
+        var x = parseInt(Math.random() * panelX)
+        var y = parseInt(Math.random() * panelY)
+        console.log(x,y)
         fish.css({
-          left: left,
-          top, top
+          left: x,
+          top: y
         })
       })
-    })
+      
+      
+    }
   </script>
 </head>
 <body>

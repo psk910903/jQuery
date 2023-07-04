@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>show(), hide()</title>
+  <style>
+    #target{
+      border: 1px solid black;
+      width: 600px;
+      height: 500px;
+      text-align: center;
+    }
+    #korea{
+      width: 600px;
+      height: 500px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //움직일 대상 찾아오기
+      var img1 = $('#target')
+
+      //나타나는 효과
+      $('#show').on('click', function(){
+        img1.show(6000, function(){
+          alert('show 완료')
+        })
+      })
+
+      //사라지는 효과
+      $('#hide').on('click', function(){
+        img1.hide(6000, function(){
+          alert('hide 완료')
+        })
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div id="target">
+    <img id="korea" src="images/korea.png" alt="">
+  </div>
+  <div>
+    <button id="show">show</button>
+    <button id="hide">hide</button> 
+  </div>
+</body>
+</html>

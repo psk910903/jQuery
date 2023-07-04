@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>페이드 인/아웃</title>
+  <style>
+    #target{
+      border: 1px solid black;
+      width: 600px;
+      height: 500px;
+      text-align: center;
+    }
+    #korea{
+      width: 600px;
+      height: 500px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- 이징 함수를 사용하기 위해 라이브러리를 가져옴 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //움직일 대상 찾아오기
+      var img1 = $('#target')
+
+      //나타나는 효과 - 크기는 변하지 않는다. 투명도만 변함
+      $('#show').on('click', function(){
+        img1.fadeIn(6000, 'easeInQuint', function(){
+          alert('fadeIn 완료')
+        })
+      })
+
+      //사라지는 효과 - 크기는 변하지 않는다. 투명도만 변함
+      $('#hide').on('click', function(){
+        img1.fadeOut(6000, 'easeOutQuint', function(){
+          alert('fadeOut 완료')
+        })
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div id="target">
+    <img id="korea" src="images/korea.png" alt="">
+  </div>
+  <div>
+    <button id="show">fadeIn</button>
+    <button id="hide">fadeOut</button> 
+  </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 VS jquery 스타일 다루기 3</title>
+  <style>
+    div {
+      margin: 20px;
+      padding: 10px;
+      font-size: 26px;
+      border: 2px solid red;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    //자바스크립트로 여러 스타일 속성값 변경하기
+    // window.onload = function() {
+    //   var content = document.getElementById("test")
+    //   //자바스크립트로 여러 스타일 속성값을 변경하고자 한다면 스타일의 개수만큼
+    //   //아래와 같은 코드를 추가해야 한다.
+    //   content.style.fontSize= "8px"
+    //   content.style.border= "5px solid black"
+    //   content.style.margin= "50px"
+    // }
+
+    // //jQuery로 스타일 접근
+    // $(document).ready(function(){
+    //   var content = $("#test")
+    //   //jQuery로 여러 스타일 속성값을 변경하고자 한다면 css()로 한번에 묶어서 속성값을 변경할 수 있다.
+    //   content.css({
+    //     fontSize : "12px",
+    //     border : "5px solid black",
+    //     margin : "50px"})    
+    // })
+
+    $(document).ready(function(){
+      var content = $('#test')
+      content.css({
+        fontSize: 8,
+        content.border: '1px solid black',
+        content.margin: 50
+      })
+    })
+  </script>
+</head>
+<body>
+  <div id="test" class="content" style="color: blue;">
+    스타일 다루기
+  </div>
+  
+</body>
+</html>

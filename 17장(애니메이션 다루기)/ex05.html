@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>options 활용</title>
+  <style>
+    #target{
+      border: 1px solid black;
+      width: 600px;
+      height: 500px;
+      text-align: center;
+    }
+    #korea{
+      width: 600px;
+      height: 500px;
+    }
+    #info{
+      border: 1px solid black;
+      width: 600px;
+      height: 150px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- 이징 함수를 사용하기 위해 라이브러리를 가져옴 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //움직일 대상 찾아오기
+      var img1 = $('#target')
+      var info = $('#info')
+
+      //사라지는 효과
+      //진행시간, 이징함수, 애니메이션의 진행정보를 알 수 있는 progress옵션을 리터럴 객체로
+      //묶은 옵션 정보를 값으로 하여 hide()메서드 호출을 하고 있다.
+      $('#hide').on('click', function(){
+        img1.hide({
+          duration: 6000,
+          easing: 'linear',
+
+          //Promise 객체는 비동기 처리가 성공 혹은 실패 하였을 때,
+          //상태정보와 처리 종료 후에 실행될 콜백함수를 담고 있는 객체이다.
+          //progress : 형태 -> function(Promise animation, Number progress, Number remainingMs)
+          progress: function(animaion, progress, remainingMs){
+            //진행율을 퍼센트 단위 계산
+            var present = parseInt( progress * 100 )
+            //남은 시간을 초단위로 바꾸고, 소숫점 자리를 2자리로 표기
+            var reMs = (remainingMs / 1000 )
+            //투명도 구하기
+            var opa = parseFloat( img1.css('opacity')).toFixed(2)
+            var str = '진행율 : ' + present + '% <br/>'
+            str += '남은 시간 : ' + reMs + '초 <br/>'
+            str += '투명도 : ' + opa + ' <br/>'
+            info.html(str)
+          }
+        })
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div id="info">
+
+  </div>
+  <div id="target">
+    <img id="korea" src="images/korea.png" alt="">
+  </div>
+  <div>
+    <button id="hide">hide</button> 
+  </div>
+</body>
+</html>

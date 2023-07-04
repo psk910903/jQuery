@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사용자 정의 애니메이션 만들기 2</title>
+  <style>
+    #target{
+      border: 1px solid black;
+      width: 400px;
+      height: 300px;
+      text-align: center;
+      position: relative;
+    }
+    #korea{
+      width: 400px;
+      height: 300px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- 이징 함수를 사용하기 위해 라이브러리를 가져옴 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //움직일 대상 찾아오기
+      var img1 = $('#target')
+
+      //나타나는 효과 - 투명도 값을 1로 설정
+      //최종 이미지가 보이면서 이동하는 위치는 0, 0이 될 것이다.
+      $('#show').on('click', function(){
+        img1.animate({
+          opacity : 1,
+          left: 0,
+          top: 0
+        }, 6000, 'easeInQuint', function(){
+          alert('애니메이션 종료')
+        })
+      })
+
+      //사라지는 효과 - 투명도 값을 0로 설정
+      //최종 이미지가 사라지면서 이동하는 위치는 800, 500이 될 것이다.
+      $('#hide').on('click', function(){
+        img1.animate({
+          opacity : 0,
+          left: 500,
+          top: 200
+        }, 6000, 'easeOutQuint', function(){
+          alert('애니메이션 종료')
+        })
+      })
+
+      //애니메이션 정지 (stop()는 애니메이션 실행중에 멈추는 역할)
+      $('#stop').on('click', function(){
+        img1.stop();
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div>
+    <button id="show">show</button> 
+    <button id="hide">hide</button> 
+    <button id="stop">stop</button> 
+  </div>
+  <div id="target">
+    <img id="korea" src="images/korea.png" alt="">
+  </div>
+</body>
+</html>

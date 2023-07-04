@@ -1,0 +1,35 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>속성값 읽기-1 (attr())</title>
+  <style>
+    body{
+      font-size: 25px;
+    }
+    .content{
+      text-align: center;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //속성값 알아내기
+      //img태그의 src 속성값
+      var src = $('#img').attr('src')
+      //a태그의 href 속성값
+      var href = $('a').attr('href')
+      console.log("src : "+src)
+      console.log("href : "+href)
+    })
+    
+  </script>
+</head>
+<body>
+  <div class="content">
+    <img src="images/codingBrother.png" id="img">
+    <br>
+    <a href="http://www.naver.com">네이버</a>
+  </div>
+</body>
+</html>

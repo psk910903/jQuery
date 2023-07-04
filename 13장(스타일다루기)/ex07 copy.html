@@ -24,13 +24,13 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function(){
-      var size = 16
-    
+      var size = 16;
+
       $('#exec').click(function(){
-        $('.menu li').each(function(i){
-          $(this).css('fontSize', size)
-          size += 10;
+        $('.menu').each(function(){
+          $('.menu li').css('fontSize', size)
         })
+        size += 10
       })
     })
   </script>

@@ -1,0 +1,53 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>속성값 설정-2 (attr(), data())</title>
+  <style>
+    body{
+      font-size: 25px;
+    }
+    body div{
+      text-align: center;
+    }
+    .content{
+      text-align: center;
+    }
+    .target{
+      width: 200px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('img').click(function(){
+        var target = $(this)
+        var flag = !target.data('flag')
+        target.data('flag', flag)
+        
+        if(flag){
+          target.attr('src', 'images/cat.png')
+        }else{
+          target.attr('src', 'images/dog.png')
+        }
+      })
+    })
+    
+  </script>
+</head>
+<body>
+  <div class="panel1">
+    <p>첫 번째 이미지</p>
+    <img src="images/cat.png" class="target" data-flag="true" alt="">
+  </div>
+  <div class="panel2">
+    <p>두 번째 이미지</p>
+    <img src="images/cat.png" class="target" data-flag="true" alt="">
+  </div>
+  <div class="panel3">
+    <p>세 번째 이미지</p>
+    <img src="images/cat.png" class="target" data-flag="true" alt="">
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사용자 정의 애니메이션 만들기 (물고기 움직이기)</title>
+  <style>
+    *{
+      font-size: 25px;
+    }
+    #panel{
+      border: 1px solid black;
+      width: 600px;
+      height: 400px;
+      margin-top: 15px;
+      position: relative;
+    }
+    #fish{
+      position: absolute;
+      left: 50px;
+      top: 120px;
+    }
+    #info{
+      width: 600px;
+      height: 40px;
+      border: 1px solid red;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- 이징 함수를 사용하기 위해 라이브러리를 가져옴 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var fish = $('#fish')
+      var info = $('#info')
+
+      $('#panel').on('click', function(e){
+
+        //클릭한 위치 값 구하기
+        var offsetX = e.pageX - $(this).offset().left
+        var offsetY = e.pageY - $(this).offset().top
+
+        //클릭한 위치값 문자열 만들기
+        var str = 'X좌표 : ' + offsetX + ', Y좌표 : ' + offsetY
+
+        info.html(str)
+
+        fish.animate({
+          left: offsetX,
+          top: offsetY
+        }, 1000, 'easeOutBounce')
+
+      })
+      
+    })
+  </script>
+</head>
+
+<body>
+  <div id="info">
+    클릭한 위치 값 출력
+  </div>
+  <div id="panel">
+    <img id="fish" src="images/fish.png" alt="">
+  </div>
+</body>
+</html>

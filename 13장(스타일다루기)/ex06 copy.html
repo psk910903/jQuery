@@ -24,11 +24,11 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function(){
-      var select = $('.menu li.select')
-
+      var selected = $('.menu li.select')
+      
       $('#exec').click(function(){
-        var size = parseInt(select.css('fontSize'))
-        select.css('fontSize', size+1)
+        var size = parseInt(selected.css('fontSize'))
+        selected.css('fontSize', size+1)
       })
     })
   </script>

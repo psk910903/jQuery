@@ -13,35 +13,32 @@
   </style>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script>
-    var cnt =0;
     var panel = null;
+    var cnt = 0;
 
     $(document).ready(function(){
       init()
       start()
     })
-
     function init(){
       panel = $('#panel')
     }
     function start(){
-      setInterval(addTag, 1000)
+      setInterval( addTag, 1000)
     }
-
     function addTag(){
-      var color = '#' + (parseInt(Math.random() * 0xffffff)).toString(16)
-      var size = 10 + parseInt(Math.random() * 40)
-      var span = $('<span></span>')
-
-      cnt++
-      span.html(cnt)
+      var span = $("<span></span>")
+      var color = "#" + parseInt(Math.random() * 0xffffff).toString(16)
+      var fontSize = 10 + parseInt(Math.random() * 40)
+      
       span.css({
         color: color,
-        fontSize: size,
+        fontSize: fontSize,
         display: 'inline-block'
       })
+      cnt++
+      span.html(cnt)
       panel.append(span)
-      
     }
   </script>
 </head>
