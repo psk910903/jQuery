@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- ex11 -->
+  <title>영화진흥위원회 Open API 활용</title>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script>
+    //https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do 
+    //회원가입 & 로그인
+    //키 값 확인
+    //주간 영화 랭킹 정보 조회
+    //https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice
+    //    /searchWeeklyBoxOfficeList.json?key=본인키&targetDt=20221212
+    //1. fetch함수를 이용하여 json정보를 출력하시오.
+    //2. ajax함수를 이용하여, json정보를 출력하시오.
+    fetch("https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=2fa5c105a16248b5c2a9c12390c76eea&targetDt=20221212")
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        //console.log(JSON.stringify(json.boxOfficeResult.weeklyBoxOfficeList));
+        console.log( "기간:" + json.boxOfficeResult.showRange);
+        for( const obj of json.boxOfficeResult.weeklyBoxOfficeList ) {
+          console.log( obj.rank );
+          console.log( obj.movieNm );
+          console.log( obj.audiCnt );
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+      $.ajax({
+      dataType: "json",
+      url: "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=2fa5c105a16248b5c2a9c12390c76eea&targetDt=20221212",
+      mimeType: "application/json",
+      success: function(json){
+        console.log( "기간:" + json.boxOfficeResult.showRange);
+        $.each(json.boxOfficeResult.weeklyBoxOfficeList, function(index, obj) {
+          console.log( obj.rank );
+          console.log( obj.movieNm );
+          console.log( obj.audiCnt );
+        });
+
+        }
+    });
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
