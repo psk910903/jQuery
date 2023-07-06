@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>자바스크립트 vs jQuery 1</title>
+  <title>자바스크립트 vs jQuery 3</title>
   <style>
     body{
       font-size: 15px;
@@ -23,14 +23,24 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   
   <script>
-    // 자바스크립트로 아이디가 header인 노드를 찾아서 border 스타일 변경하기
+    // 자바스크립트로 태그 div의 자식 p인 노드 중에서 클래스 선택자 test2를 모두 찾아서 border스타일 변경
     // window.onload = function(){
-    //   var header = document.querySelector("#header")
-    //   header.style.border = "5px solid #f00"
+    //   var pArr = document.querySelectorAll(".test2")
+    //   for(var i =0; i<pArr.length; i++){
+    //     // pArr[i].style.border = "5px solid #f00"
+    //     var varP = pArr[i]
+    //     //만약에 p인 자식요소라면
+    //     if(varP.tagName == "P"){
+    //       //그리고 p인 자식요소의 부모요소가 DIV라면
+    //       if(varP.parentNode.tagName == "DIV"){
+    //         varP.style.border = "5px solid #f00"
+    //       }
+    //     }
+    //   }
     // }
 
     $(document).ready(function(){
-      $("#header").css("border", "5px solid red")
+      $("div p.test2").css("border", "5px solid red")
     })
 
 

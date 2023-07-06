@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>자바스크립트 vs jQuery 1</title>
+  <title>자바스크립트 vs jQuery 2</title>
   <style>
     body{
       font-size: 15px;
@@ -23,14 +23,16 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   
   <script>
-    // 자바스크립트로 아이디가 header인 노드를 찾아서 border 스타일 변경하기
+    // 자바스크립트로 태그 이름이 p인 노드를 찾아서 border스타일 변경하기
     // window.onload = function(){
-    //   var header = document.querySelector("#header")
-    //   header.style.border = "5px solid #f00"
+    //   var p = document.querySelectorAll("p")
+    //   for(var i =0; i<p.length; i++){
+    //     p[i].style.border = "5px solid #f00"
+    //   }
     // }
 
     $(document).ready(function(){
-      $("#header").css("border", "5px solid red")
+      $("p").css("border", "5px solid red")
     })
 
 

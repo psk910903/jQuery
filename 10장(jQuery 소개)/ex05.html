@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 vs jQuery 3</title>
+  <style>
+    body{
+      font-size: 15px;
+      font-family: "굴림";
+    }
+    #panel{
+      width: 600px;
+      height: 300px;
+      border: 2px solid black;
+      position: relative;
+    }
+    #gigu{
+      position: absolute;
+      left: 50px;
+      top: 140px;
+      width: 50px;
+    }
+    #var{
+      position: absolute;
+      left: 50px;
+      top: 190px;
+      width: 500px;
+      height: 15px;
+      background-color: #f30;
+    }
+    #nav{
+      text-align: center;
+      width: 600px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  
+  <script>
+    // 자바스크립트로 버튼을 클릭하면 지구 이미지가 움직이는 효과 만들기
+    // window.onload = function(){
+    //   var gigu = document.getElementById("gigu")
+    //   var btnStart = document.getElementById("btnStart")
+      
+    //   var left = 50
+    //   var timerID = 0
+
+    //   //버튼에 이벤트 등록
+    //   btnStart.addEventListener("click", function(){
+    //     //지구 이미지가 움직이기
+    //     timerID = setInterval(function(){
+    //       left++
+    //       gigu.style.left = left + 'px'
+
+    //       if(left >= 500){
+    //         gigu.style.left = "50px"  
+    //         clearInterval(timerID)
+    //         timerID =0;
+    //       }
+    //     }, 1)
+    //   })
+    // }
+
+    $(document).ready(function(){
+      var gigu = $("#gigu")
+
+      $("#btnStart").click(function(){
+        gigu.animate({
+          left : 500
+        },3000)
+      })
+    })
+
+
+  </script>
+</head>
+<body>
+  <div id="panel">
+    <div id="var"></div>
+    <img src="images/gigu.png" id="gigu" alt="">
+  </div>
+  <div id="nav">
+    <button id="btnStart">버튼</button>
+  </div>
+</body>
+</html>
