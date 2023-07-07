@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 클릭시 인덱스 출력하는 프로그램</title>
+  <style>
+    .tabMenu{
+      list-style: none;
+      height: 80px;
+    }
+    .tabMenu li {
+      width: 100px;
+      height: 40px;
+      background-position-y: 0;
+      text-indent: -1000px;
+      overflow: hidden;
+      display: inline-block;
+      float: left;
+    }
+    .tabMenu li:hover{
+      background-position-y: -40px;
+    }
+    .tabMenu li.select{
+      background-position-y: -80px;
+      height: 80px;
+    }
+    .tabMenu li.menuItem1 {
+      background-image: url(images/newbtn.bar.1.png);
+    }
+    .tabMenu li.menuItem2 {
+      background-image: url(images/newbtn.bar.2.png);
+    }
+    .tabMenu li.menuItem3 {
+      background-image: url(images/newbtn.bar.3.png);
+    }
+    .tabMenu li.menuItem4 {
+      background-image: url(images/newbtn.bar.4.png);
+    }
+    .tabMenu li.menuItem5 {
+      background-image: url(images/newbtn.bar.5.png);
+    }
+    .tabMenu li.menuItem6 {
+      background-image: url(images/newbtn.bar.6.png);
+    }
+    
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        //클릭한 이미지의 인덱스를 출력하는 프로그램
+        $('#tabMenu1 li').click(function(e){
+          alert("인덱스 값: " + $(this).index())
+        })
+
+        //1초간격으로 tabMenu가 select적용하기
+        var currentIndex = 0;
+        var menuItems = $('#tabMenu1 li')
+        var timerID = setInterval(function(){
+          var item = menuItems.eq(currentIndex)
+
+          //위에서 찾아온 li객체에 select 클래스를 추가하고 있다.
+          item.addClass("select")
+          currentIndex ++
+          if(currentIndex > menuItems.length){
+            clearInterval(timerID)
+          }
+        }, 500)        
+      })
+    </script>
+  <script>
+  </script>
+</head>
+<body>
+  <ul class="tabMenu" id="tabMenu1">
+    <li class="menuItem1">구글</li>
+    <li class="menuItem2">페이스북</li>
+    <li class="menuItem3">프린터리스트</li>
+    <li class="menuItem4">트위터</li>
+    <li class="menuItem5">에어비앤비</li>
+    <li class="menuItem5">패스</li>
+  </ul>
+</body>
+</html>
