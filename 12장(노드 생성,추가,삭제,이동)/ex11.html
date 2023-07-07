@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드 추가,이동,삭제의 실무적 예제</title>
+  <style>
+    body{
+      font-size: 15px;
+      font-family: '맑은 고딕';
+    }
+    ul, li{
+      border: 3px solid gray;
+      margin: 10px;
+    }
+    ul.menu{
+      padding: 10px;
+      list-style: none;
+      border: 1px solid #000;
+    }
+
+    ul.menu li{
+      border: 1px solid gray;
+      margin: 10px;
+    }
+    button{
+      text-align: center;
+    }
+    button:hover{
+      background-color: yellow;
+    }
+
+    .select{
+      background-color: gray;
+    }
+
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //내가 짠 코드
+      // let menuName = $('#menuName')
+      // let menu = $('.menu')
+
+      // $('#add').click(function(){  
+
+      //   if(menuName.val() !== ""){
+      //     menu.append("<li>"+menuName.val()+"</li>")
+      //     menuName.val("")
+      //   }
+      // })
+
+      // $('.menu').on('click', 'li', function(){
+      //   $('.menu li').removeClass()
+      //   $(this).addClass('select')
+      // })
+
+      // $('#update').click(function(){  
+      //   $('.select').text(menuName.val())
+      //   menuName.val("")
+      // })
+
+      // $('#remove').click(function(){  
+      //   $('.select').remove()
+      // })
+
+      // $('#up').click(function(){  
+      //   let select = $('.select')
+      //   let prev = select.prev()
+      //   prev.before(select)
+      // })
+
+      // $('#down').click(function(){  
+      //   let select = $('.select')
+      //   let prev = select.next()
+      //   prev.after(select)
+      // })
+
+
+
+      //전역 변수 선언 및 초기화
+      let menu = null
+      let menuName = null
+      let selectedItem = null
+      //초기화 함수 및 이벤트 등록 메서드 호출
+      init()
+      initEvent()
+
+      //전역에서 사용할 jQuery변수 초기화
+      function init(){
+        menu = $('ul.menu')
+        menuName = $('#menuName')
+      }
+
+      //이벤트 초기화
+      function initEvent(){
+        //메뉴 추가 부분
+        $('#add').click(function(){
+          addMenu();
+        })
+        menu.on('click', 'li', function(){
+          select($(this))
+        })
+        $('#update').click(function(){
+          updateMenuItem();
+        })
+        $('#remove').click(function(){
+          removeMenuItem();
+        })
+        $('#up').click(function(){
+          upMenuItem();
+        })
+        $('#down').click(function(){
+          downMenuItem();
+        })
+      }
+
+      //메뉴 추가 처리 구현부
+      function addMenu(){
+        //사용자 입력 텍스트 가져오기
+        let  menuNameText = menuName.val()
+        //추가할 신규 메뉴를 만들 문자열 만들기
+        let newMenuItem = "<li>"+menuNameText+"</li>"
+        //추가된 아이템이 있다면 아래로 추가
+        if(selectedItem){
+          selectedItem.after(newMenuItem)
+        }else{
+          //신규 메뉴 아이템을 추가
+          menu.append(newMenuItem)
+        }
+      } 
+      //메뉴 선택 처리 구현부
+      function select(item){
+        //기존 선택 아이템이 있는 경우 선택 효과 제거
+        if(selectedItem != null){
+          selectedItem.removeClass()
+        }
+        selectedItem = item
+        selectedItem.addClass('select')
+      }
+
+      //선택된 메뉴 항목 이름 수정하는 코드
+      function updateMenuItem(){
+        if(selectedItem){
+          var menuNameText = menuName.val()
+          selectedItem.html(menuNameText)
+        }else{
+          alert('선택 메뉴가 존재하지 않습니다.')
+        } 
+      }
+
+      //선택된 메뉴 항목 삭제하는 코드
+      function removeMenuItem(){
+        if(selectedItem){
+          selectedItem.remove() //삭제
+          //선택 메뉴가 삭제되면 선택된 메뉴가 없으므로 null 대입
+          selectedItem = null;
+        }else{
+          alert('선택 메뉴가 존재하지 않습니다.')
+        } 
+      }
+
+      function upMenuItem(){
+        if(selectedItem){
+          //이전 메뉴 아이템을 얻어온다.
+          let prevItem = selectedItem.prev()
+          //이전 메뉴가 있다면
+          if(prevItem){
+            selectedItem.insertBefore(prevItem)
+          }else{
+            alert('선택 메뉴가 존재하지 않습니다.')
+          }
+        }
+      }
+
+      function downMenuItem(){
+        if(selectedItem){
+          //이전 메뉴 아이템을 얻어온다.
+          let nextItem = selectedItem.next()
+          //이전 메뉴가 있다면
+          if(nextItem){
+            selectedItem.insertAfter(nextItem)
+          }else{
+            alert('선택 메뉴가 존재하지 않습니다.')
+          }
+        }
+      }
+    })
+  </script>
+</head>
+<body>
+  <input type="text" id="menuName">
+  <button id="add">추가</button>
+  <button id="update">수정</button>
+  <button id="remove">삭제</button>
+  <button id="up">UP</button>
+  <button id="down">DOWN</button>
+  <ul class="menu">
+  </ul>
+</body>
+</html>

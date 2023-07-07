@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드 생성 - jquery 메서드 html(), text() 차이점 -1</title>
+  <style>
+    body{
+      font-size: 15px;
+      font-family: '맑은 고딕';
+    }
+    ul, li{
+      border: 3px solid gray;
+      margin: 10px;
+    }
+    li.select {
+      background-color: aquamarine;
+    }
+
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#ok').click(function(){
+        //html()는 특정노드들의 마크업까지 확인할 수 있다. 리턴값이 DOM객체가 아니라 문자열 타입이다.
+        //자신을 제외한 자식, 자손 노드의 마크업과 텍스트의 정보가 출력된다.
+        console.log($('#menu').html())
+
+        //text()는 단순히 마크업언어를 제외하고 텍스트 노드의 내용만 출력한다.
+        console.log($('#menu').text())
+      })
+    })
+  </script>
+</head>
+<body>
+  <button id="ok">확인</button>
+  <ul id="menu">
+    <li>메뉴1</li>
+    <li>메뉴2</li>
+    <li>메뉴3</li>
+    <li>메뉴4</li>
+    <li class="select">메뉴5</li>
+    <li>메뉴6</li>
+  </ul>
+</body>
+</html>
