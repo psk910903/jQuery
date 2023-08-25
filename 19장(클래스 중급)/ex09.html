@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스 프로퍼티와 메서드</title>
+  <style>
+    .tab-menu {
+      list-style: none;
+      height: 80px;
+    }
+    .tab-menu li {
+      width: 100px;
+      height: 40px;
+      background-position-y: 0;
+      overflow: hidden;
+      display: inline-block;
+      float: left;
+      text-indent: -1000px;
+    }
+    .tab-menu li:hover{
+      background-position-y: -40px;
+    }
+    .tab-menu li.select{
+      background-position-y: -80px;
+      height: 80px;
+    }
+    .tab-menu li.menuItem1 {
+      background-image: url(images/newbtn.bar.1.png);
+    }
+    .tab-menu li.menuItem2 {
+      background-image: url(images/newbtn.bar.2.png);
+    }
+    .tab-menu li.menuItem3 {
+      background-image: url(images/newbtn.bar.3.png);
+    }
+    .tab-menu li.menuItem4 {
+      background-image: url(images/newbtn.bar.4.png);
+    }
+    .tab-menu li.menuItem5 {
+      background-image: url(images/newbtn.bar.5.png);
+    }
+    .tab-menu li.menuItem6 {
+      background-image: url(images/newbtn.bar.6.png);
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var tabMenu1 = new TabMenu('#tabMenu1');
+      tabMenu1.setSelectItemAt(1);
+
+      var tabMenu2 = new TabMenu('#tabMenu2');
+      tabMenu2.setSelectItemAt(2);
+    })
+
+    function TabMenu(selector) {
+      this.tabMenu = null;
+      this.menuItem = null;
+      this.selectedMenuItem = null;
+
+      this.init(selector);
+      this.initEvent();
+    }
+    
+    TabMenu.prototype.init = function(selector){
+      this.tabMenu = $(selector);
+      this.menuItem = this.tabMenu.find('li');
+    }
+
+    TabMenu.prototype.initEvent = function(){
+      var objThis = this;
+      this.menuItem.on('click', function(){
+        objThis.setSelectItem($(this));
+      });
+    }
+
+    TabMenu.prototype.setSelectItem = function(menuItem){
+      if(this.selectedMenuItem){
+        this.selectedMenuItem.removeClass('select');
+      }
+      this.selectedMenuItem = menuItem;
+      this.selectedMenuItem.addClass('select');
+    }
+
+    TabMenu.prototype.setSelectItemAt = function(index){
+      var menuItem = this.menuItem.eq(index);
+      this.setSelectItem(menuItem);
+    }
+
+    //탭메뉴 정보 추가(클래스 프로퍼티와 메서드)
+    TabMenu.version = "1.0"
+    TabMenu.getInfo = function(){
+      var info = {
+        developer: "신은혁",
+        email: "test@gamil.com",
+        desc: "탭 메뉴를 구현한 클래스입니다."
+      }
+      return info;
+    }
+
+    console.log(TabMenu.getInfo())
+    
+  </script>
+</head>
+
+<body>
+  <p>첫 번째 탭메뉴</p>
+  <ul class="tab-menu" id="tabMenu1">
+    <li class="menuItem1">google</li>
+    <li class="menuItem2">facebook</li>
+    <li class="menuItem3">pinterest</li>
+    <li class="menuItem4">twitter</li>
+    <li class="menuItem5">airbnb</li>
+    <li class="menuItem6">path2</li>
+  </ul>
+  <ul class="tab-menu" id="tabMenu2">
+    <li class="menuItem1">google</li>
+    <li class="menuItem2">facebook</li>
+    <li class="menuItem3">pinterest</li>
+    <li class="menuItem4">twitter</li>
+    <li class="menuItem5">airbnb</li>
+    <li class="menuItem6">path2</li>
+  </ul>
+</body>
+</html>

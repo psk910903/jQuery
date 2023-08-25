@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수방식으로 클래스 만들기</title>
+  <style>
+    
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //class키워드가 없기 때문에 function으로 대체하고 클래스 이름 앞을 대문자로 한다.
+      function Person() { //멤버가 4개인 클래스 설계 //프로퍼티(속성) : 3개, 멤버메서드(함수) : 1개
+        this.name = '신은혁';
+        this.age = 15;
+        this.address = '대구시';
+        this.displayPerson = function(){
+          document.write('name : '+ this.name + ", age : " + this.age + ', address : '+ this.address + '<br>')
+        }
+      }
+      //인스턴스 생성
+      let person = new Person();
+
+      //person이라는 인스턴스 변수를 통해서 멤버 속성에 접근 변경이 가능
+      person.age = 20;
+      person.displayPerson(); //age 20
+
+      //모든 인스턴스의 저장공간은 서로 독립적이다.
+      let person2 = new Person();
+      person2.displayPerson(); //age 15
+    })
+  </script>
+</head>
+
+<body>
+
+</body>
+</html>

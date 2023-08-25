@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리터럴 클래스를 매개변수의 값으로 사용하기 2</title>
+  <style>
+    
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      //css() 3번 호출
+      // let bar1 = $('#bar1')
+      // bar1.css('position', 'absolute')
+      // bar1.css('left', 100)
+      // bar1.css('top', 100)
+
+      //css() 1번 호출, 가독성 좋음, 효율성 높음
+      let bar1 = $('#bar1')
+      bar1.css({
+        position: 'absolute',
+        left: 100,
+        top:100,
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <img src="images/newbtn.bar.1.png" id="bar1" alt="">
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this의 정체-2</title>
+  <style>
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    //전역변수
+    var data = 10;
+    $(document).ready(function(){
+      //함수 부분에서의 this는 window객체의 소속
+      //함수 생성
+      function outer(){
+        //중첩함수
+        function inner(){
+          //윈도우 객체의 this
+          this.data = 20;
+          data = 30;
+
+          document.write("1. data1 = "+ data + "<br/>")
+          document.write("2. data2 = "+ this.data + "<br/>")
+          document.write("3. window.data3 = "+ window.data + "<br/>")
+        }
+        inner()
+      }
+      outer()
+    })
+    
+    
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>

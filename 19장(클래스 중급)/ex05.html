@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수 호출</title>
+  <style>
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    var userName = "신은혁"
+    //함수 정의
+    function User(name){
+      //윈도우 객체의 this
+      this.userName = name;
+    }
+
+    //함수 호출
+    User("김연아");
+    console.log("userName : "+ userName) //김연아
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>

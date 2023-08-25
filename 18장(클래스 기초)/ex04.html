@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리터럴 클래스를 매개변수의 값으로 사용하기 1</title>
+  <style>
+    
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      // function showInfo(userName, id, nickName, age, address){
+      //   document.write('userName : '+userName)
+      //   document.write(' id : '+id)
+      //   document.write(' nickName : '+nickName)
+      //   document.write(' age : '+age)
+      //   document.write(' address : '+address)
+      // }
+
+      //오브젝트 리터럴 클래스를 매개변수로 받고 있다.
+      function showInfo(userInfo){
+        
+        document.write('userName : '+userInfo.userName)
+        document.write(' id : '+userInfo.id)
+        document.write(' nickName : '+userInfo.nickName)
+        document.write(' age : '+userInfo.age)
+        document.write(' address : '+userInfo.address)
+        return
+      }
+
+      //오브젝트 리터럴 클래스 방식으로 매개변수를 주는 코드
+      let userInfo = {
+        userName:'신은혁',
+        id:'eun',
+        nickName:'태권소년',
+        age:'15',
+        address:'대구시',
+      }
+
+      //일반적 방식
+      // showInfo('신은혁','eun', '태권소년','15','대구시')
+
+      //오브젝트 리터럴 방식
+      showInfo(userInfo)
+    })
+  </script>
+  <script>
+    /**
+ * This is about <code>Example.js</code>.
+ * {@link com.yourCompany.aPackage.aFile}
+ * @author author
+ * @deprecated use <code>BetterExample.js</code>
+ */
+var index = 0;
+var arr = [];
+
+function foo() {
+    /* This comment may span multiple lines. */
+    var var1 = new Object();
+    var obj = { carMake: 'Amet', carModel: 'Porro', carYear: 2012 };
+    var s = "abc123";
+    clear(var1);
+}
+
+function pop() {
+    return arr[index--];
+}
+
+function push(elem) {
+    // This comment may span only this line
+    arr[index++] = elem;
+}
+
+function isEmpty() {
+    // TASK: refactor
+    return index == 0;
+}
+
+
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>

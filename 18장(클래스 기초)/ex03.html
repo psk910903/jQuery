@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리터럴 클래스로 다중탭메뉴 생성하기</title>
+  <style>
+    .tap-menu {
+      list-style: none;
+      height: 80px;
+    }
+    .tap-menu li {
+      width: 100px;
+      height: 40px;
+      background-position-y: 0;
+      overflow: hidden;
+      display: inline-block;
+      float: left;
+      text-indent: -1000px;
+    }
+    .tap-menu li:hover{
+      background-position-y: -40px;
+    }
+    .tap-menu li.select{
+      background-position-y: -80px;
+      height: 80px;
+    }
+    .tap-menu li.menuItem1 {
+      background-image: url(images/newbtn.bar.1.png);
+    }
+    .tap-menu li.menuItem2 {
+      background-image: url(images/newbtn.bar.2.png);
+    }
+    .tap-menu li.menuItem3 {
+      background-image: url(images/newbtn.bar.3.png);
+    }
+    .tap-menu li.menuItem4 {
+      background-image: url(images/newbtn.bar.4.png);
+    }
+    .tap-menu li.menuItem5 {
+      background-image: url(images/newbtn.bar.5.png);
+    }
+    .tap-menu li.menuItem6 {
+      background-image: url(images/newbtn.bar.6.png);
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      tabMenu1.init();
+      tabMenu1.initEvent();
+      tabMenu2.init();
+      tabMenu2.initEvent();
+    })
+
+    //리터럴 클래스로 정의
+    let tabMenu1 = {
+      //3개의 멤버변수 초기화
+      tabMenu:null,
+      menuItem:null,
+      selectMenuItem:null,
+
+      //요소 값지정하는 메서드
+      init:function(){
+        this.tabMenu = $('#tabMenu1')
+        this.menuItem = this.tabMenu.find('li')
+
+      },
+      //이벤트 등록
+      initEvent:function(){
+        let objThis = this; //tabMenu1 객체를 가리킴
+        this.menuItem.on('click',function(){
+          objThis.setSelectItem($(this)) //tabMenu1 객체의 함수인 setSelectItem()호출
+        })
+      },
+
+      //menuItem에 해당하는 메뉴 아이템을 선택하기
+      setSelectItem:function(menuItem){
+        //기존에 선택한 메뉴가 있다면 삭제
+        if(this.selectMenuItem){
+          this.selectMenuItem.removeClass('select')
+        }
+        //신규 아이템으로 설정하시오.
+        this.selectMenuItem = menuItem
+        this.selectMenuItem.addClass('select')
+      }
+    }
+
+    let tabMenu2 = {
+      //3개의 멤버변수 초기화
+      tabMenu:null,
+      menuItem:null,
+      selectMenuItem:null,
+
+      //요소 값지정하는 메서드
+      init:function(){
+        this.tabMenu = $('#tabMenu2')
+        this.menuItem = this.tabMenu.find('li')
+
+      },
+      //이벤트 등록
+      initEvent:function(){
+        let objThis = this; //tabMenu1 객체를 가리킴
+        this.menuItem.on('click',function(){
+          objThis.setSelectItem($(this)) //tabMenu1 객체의 함수인 setSelectItem()호출
+        })
+      },
+
+      //menuItem에 해당하는 메뉴 아이템을 선택하기
+      setSelectItem:function(menuItem){
+        //기존에 선택한 메뉴가 있다면 삭제
+        if(this.selectMenuItem){
+          this.selectMenuItem.removeClass('select')
+        }
+        //신규 아이템으로 설정하시오.
+        this.selectMenuItem = menuItem
+        this.selectMenuItem.addClass('select')
+      }
+    }
+    //결론
+    //오브젝트 리터럴 방식은 오로지 하나의 인스턴스만 가진다.
+    //{}에 프로퍼티, 메서드가 존재하므로 정의함과 동시에 인스턴스가 생성된다.
+    //따로 new연산자를 사용하지 않아도 하나의 인스턴스는 만들어지지만 여러개를 만들지 못한다.
+    //오브젝트 리터럴 방식의 주 용도는 여러개의 데이터를 포장용으로 사용하거나 함수에 매개변수 값으로 줄 때 유용하다
+  </script>
+</head>
+
+<body>
+  <p>첫 번째 탭메뉴</p>
+  <ul class="tap-menu" id="tabMenu1">
+    <li class="menuItem1">google</li>
+    <li class="menuItem2">facebook</li>
+    <li class="menuItem3">pinterest</li>
+    <li class="menuItem4">twitter</li>
+    <li class="menuItem5">airbnb</li>
+    <li class="menuItem6">path</li>
+  </ul>
+  <p>두 번째 탭메뉴</p>
+  <ul class="tap-menu" id="tabMenu2">
+    <li class="menuItem1">google</li>
+    <li class="menuItem2">facebook</li>
+    <li class="menuItem3">pinterest</li>
+    <li class="menuItem4">twitter</li>
+    <li class="menuItem5">airbnb</li>
+    <li class="menuItem6">path</li>
+  </ul>
+</body>
+</html>
