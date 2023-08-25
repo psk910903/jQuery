@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>절차지향적 프로그래밍 예</title>
+  <title>객체지향적 프로그래밍 예</title>
   <style>
     .tab-menu {
       list-style: none;
@@ -47,41 +47,47 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   <script>
-    //절차지향적 프로그램의 예
-    var tab1MenuItem = null;
-    var tab2MenuItem = null;
+    //객체지향적 프로그램의 예
+    //코드의 재사용성이 매우 높다.
+    //외부에서 접근하려면 인스턴스 변수를 가지고 얼마든지 접근 가능하다.
     $(document).ready(function(){
-      tab1MenuItem = $("#tabMenu1 li")
-      tab2MenuItem = $("#tabMenu2 li")
-
-      //함수의 매개변수로 전역데이터를 넘겨준다.
-      tabMenu(tab1MenuItem)
-      tabMenu(tab2MenuItem)
-
-      //탭메뉴 초기화 
-      
-      btnReset = $("#btnReset")
-      btnReset.click(function(){
-        resetTabMenu(tab1MenuItem)
-        resetTabMenu(tab2MenuItem)
+      var tabMenu1 = new TabMenu("#tabMenu1")
+      var tabMenu2 = new TabMenu("#tabMenu2")
+      $("#btnReset").on("click", function(){
+        tabMenu1.resetTabMenu()
+        tabMenu2.resetTabMenu()
       })
-    })
+    });
 
-    //탭메뉴 생성
-    function tabMenu(menuItem){
-      menuItem.click(function(){
-        selectMenuItemAt(menuItem, $(this).index());
+    //탭메뉴 클래스 정의(설계)
+    function TabMenu(selector){
+      this.init(selector);
+      this.initEvent();
+    }
+    //요소 초기화
+    TabMenu.prototype.init = function(selector){
+      //인스턴스가 생성되면 탭메뉴가 생성되고 li객체를 찾아온다.
+      this.tabMenu = $(selector);
+      this.menuItem = this.tabMenu.find("li");
+    }
+    //이벤트 초기화
+    TabMenu.prototype.initEvent = function(){
+      var localThis = this;
+      this.menuItem.on("click", function(){
+        //선택된 아이템의 인덱스를 가지고 메서드를 호출
+        localThis.setSelectMenuItemAt($(this).index());
       })
     }
 
-    function selectMenuItemAt(menuItem, index){
-      menuItem.removeClass("select");
-      menuItem.eq(index).addClass("select");
+    //n번째 탭메뉴
+    TabMenu.prototype.setSelectMenuItemAt = function(index){
+      this.menuItem.removeClass("select")
+      this.menuItem.eq(index).addClass("select")
     }
 
     //탭메뉴 선택 초기화
-    function resetTabMenu(menuItem){
-      menuItem.removeClass("select");
+    TabMenu.prototype.resetTabMenu = function(){
+      this.menuItem.removeClass("select")
     }
   </script>
 </head>
