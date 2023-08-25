@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>추상화 예제-1</title>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    //절차지향적 프로그램의 예
+    
+    $(document).ready(function(){
+      var person = new Person("신은혁", "남자", "턱걸이");
+      person.say();
+      person.getInfo();
+    })
+
+    //추상화
+    function Person(name, gender, hobby){
+      //생성자 정의 및 프로퍼티 초기화
+      //사람에게는 공통적으로 프로퍼티가 이름, 성별, 취미가 있다.
+      this.name = name;
+      this.gender = gender;
+      this.hobby = hobby;
+    }
+    //공통적인 부분을 메서드로 정의
+    Person.prototype.say = function(){ //선언부
+      document.write("말한다.<br>") //구현부
+    }
+    Person.prototype.see = function(){
+      document.write("본다.<br>")
+    }
+    Person.prototype.eat = function(){
+      document.write("먹는다.<br>")
+    }
+    Person.prototype.listening = function(){
+      document.write("듣는다.<br>")
+    }
+    Person.prototype.getInfo = function(){
+      document.write("이름: "+this.name+"<br>성별: "+this.gender+"<br>취미: "+this.hobby+"<br>")
+    }
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>

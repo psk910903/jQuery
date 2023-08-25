@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta model="viewport" content="width=device-width, initial-scale=1.0">
+  <title>추상화 예제-2</title>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    //절차지향적 프로그램의 예
+    
+    $(document).ready(function(){
+      var tv = new TV("스마트TV", "FHD", 10, 20);
+      tv.on();
+      tv.showInfo();
+      tv.channelChange(50)
+      tv.soundChange(100)
+      tv.showInfo();
+    })
+
+    //추상화
+    function TV(model, resolution, channel, volume ){
+      this.model = model;
+      this.resolution = resolution;
+      this.channel = channel;
+      this.volume = volume;
+    }
+    //공통적인 부분을 메서드로 정의
+    //전원 On()정의
+    TV.prototype.on = function(){ //선언부
+      document.write("켜짐.<br>") //구현부
+    }
+    TV.prototype.off = function(){
+      document.write("꺼짐.<br>")
+    }
+    TV.prototype.channelChange = function(channel){
+      this.channel = channel;
+      document.write("현재 채널은 "+this.channel+"입니다.<br>")
+    }
+    TV.prototype.soundChange = function(volume){
+      document.write("현재 볼륨은 "+this.volume+"입니다.<br>")
+    }
+    TV.prototype.showInfo = function(){
+      document.write("모델: "+this.model+"<br>해상도: "+this.resolution+"<br>현재 채널: "+this.channel+"<br>현재 볼륨: "+this.volume+"<br>")
+    }
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>
