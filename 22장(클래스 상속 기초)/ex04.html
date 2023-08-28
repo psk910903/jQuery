@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스의 상속 기능 - 확장</title>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      
+    })
+    //부모 클래스 정의
+    function CellPhone(){
+      //프로퍼티 정의
+      this.model = null;
+      this.color = null;
+    }
+    
+
+    var br = "<br/>"
+    //메서드 정의(6개)
+    CellPhone.prototype.powerOn = function(){
+      document.write("전원을 켭니다."+ br)
+    }
+    CellPhone.prototype.powerOff = function(){
+      document.write("전원을 끕니다."+ br)
+    }
+    CellPhone.prototype.bell = function(){
+      document.write("벨이 울립니다."+ br)
+    }
+    CellPhone.prototype.hangUp = function(){
+      document.write("전화를 끊습니다."+ br)
+    }
+    CellPhone.prototype.sendVoice = function(message){
+      document.write("자신 : " + message + br)
+    }
+    CellPhone.prototype.receiveVoice = function(message){
+      document.write("상대방 : " + message + br)
+    }
+
+    //자식 클래스(상속만 받았을 뿐 자신의 멤버는 하나도 없는 형태)
+    // function DmbCellPhone(){
+
+    // }
+    // DmbCellPhone.prototype = new CellPhone();
+
+    //확장하고 있는 자식 클래스(멤버 12개)
+    //결과론적으로 oop 언어를 지원하는 곳에서 상속의 최대 기능은 확장(extension)인 것이다.
+    //부모클래스의 멤버가 1개라도 추가되거나 삭제되면 자식클래스에 바로 영향을 끼친다.
+    //이것이 바로 직접적 관계인다.
+    //반대로 자식클래스의 변화는 부모클래스에 아무런 영향을 끼치지 않는다.
+    function DmbCellPhone(){
+      //프로퍼티 정의
+      this.channel = null;
+    }
+    DmbCellPhone.prototype = new CellPhone();
+    //자식 클래스만의 고유 메서드
+    DmbCellPhone.prototype.turnOnDmb = function(channel){
+      this.channel = channel;
+      document.write("현재 채널 : " + channel + "번 DMB 방송 수신을 시작합니다."+br)
+    }
+    DmbCellPhone.prototype.turnOffDmb = function(){
+      document.write("DMB 방송 수신을 멈춥니다."+br)
+    }
+    DmbCellPhone.prototype.changeChannelDmb = function(channel){
+      this.channel = channel;
+      document.write("현재 채널을 " + channel + "번으로 바꿉니다."+br)
+    }
+
+    var dmb = new DmbCellPhone();
+    dmb.powerOn()
+    dmb.bell()
+    dmb.sendVoice("안녕하세요")
+    dmb.receiveVoice("네 반갑습니다.")
+    dmb.hangUp()
+    dmb.powerOff()
+    document.write("-------------------------------------------"+br)
+    dmb.turnOnDmb(11)
+    document.write("현재 채널: "+dmb.channel+br)
+    dmb.changeChannelDmb(30)
+    document.write("현재 채널: "+dmb.channel+br)
+    dmb.turnOffDmb()
+    
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>

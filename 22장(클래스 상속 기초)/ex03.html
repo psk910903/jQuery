@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스의 상속 기능 - 코드 중복 제거</title>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var classA = new MyClassA();
+      document.write("classA.property1: "+classA.property1+br)
+      classA.method1()
+      classA.method2()
+      var classB = new MyClassB();
+      document.write("classB.property1: "+classB.property1+br)
+      classB.method1()
+      classB.method2()
+    })
+    //부모 클래스 정의(중복 코드를 담을 클래스)
+    //중복된 코드를 부모 클래스가 관리하게 되면, 유지보수 용이
+    //코드의 신뢰성도 높아지고, 코드의 양도 줄어듦
+    function MyParent(){
+      this.property1 = 10;
+    }
+
+    MyParent.prototype.method1 = function(){
+      document.write("this.property1 : " + this.property1 + br);
+    }
+
+    var br = "<br/>"
+    //첫 번째 클래스 - MyClassA
+    function MyClassA() {
+    }
+    MyClassA.prototype = new MyParent();
+    //MyClassA 클래스가 가지는 고유의 메서드
+    MyClassA.prototype.method2 = function(){
+      document.write("이 기능은 MyClassA에 있는 기능입니다." + br);
+    }
+
+    //두 번째 클래스 - MyClassA
+    function MyClassB() {
+    }
+    MyClassB.prototype = new MyParent();
+    //MyClassB 클래스가 가지는 고유의 메서드
+    MyClassB.prototype.method2 = function(){
+      document.write("이 기능은 MyClassB에 있는 기능입니다." + br);
+    }
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>

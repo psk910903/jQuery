@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스의 상속 예제-2</title>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var myCar = new SportCar(100);
+      
+      myCar.speedUp();
+      myCar.speedDown();
+      myCar.stop();
+      myCar.run();
+    })
+    //부모클래스 정의(멤버는 4개)
+    function Car(speed) {
+      //프로퍼티 생성
+      this.speed = speed;
+    }
+    Car.prototype.speedUp = function(){
+      this.speed += 10;
+      document.write(this.speed + "<br/>");
+    }
+    Car.prototype.speedDown = function(){
+      this.speed -= 10;
+      document.write(this.speed + "<br/>");
+    }
+    Car.prototype.stop = function(){
+      this.speed = 0;
+      document.write(this.speed + "<br/>");
+    }
+    //자식클래스 정의
+    function SportCar(speed){
+      this.speed = speed;
+    }
+    //자바스크립트에서의 상속 문법
+    SportCar.prototype = new Car();
+
+    SportCar.prototype.run = function(){
+      document.write("스포츠카 속도: " + this.speed + "<br/>")
+    }
+
+
+
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>
