@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메서드 오버로딩-1</title>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    //더하기 함수
+    function sum(){
+      var result = 0; // 지역변수는 반드시 초기화가 원칙이다.
+      //arguments 객체는 함수(메서드)를 호출할 때 전달되는 매개변수(인자값, 인수, 파라미터, arguments)
+      //에 해당항하는 유사배열이다.
+      //Array 객체 내장함수 사용불가 (length, index만 사용가능)
+      //자바스크립트에서는 문법적으로 메서드 오버로딩을 지원하지 않지만
+      //arguments 객체로 메서드 오버로딩 흉내를 낼 수 있다.
+      //메서드 오버라이드는 modify, change 라면 메서드 오버로딩은 new라고 생각하면 됨.
+      for(var i=0; i<arguments.length; i++){
+        result += arguments[i];
+      }
+      return result;
+    }
+    //함수의 매개변수를 다르게 하여 호출
+    console.log("sum(10)" +sum(10))
+    console.log("sum(10, 20)" +sum(10, 20))
+    console.log("sum(10, 20, 30)" +sum(10, 20, 30))
+    console.log("sum(10, 20, 30, 40)" +sum(10, 20, 30, 40))
+
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>

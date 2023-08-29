@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부모 클래스의 생성자 호출-1</title>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script>
+    //부모클래스 정의
+
+    function MyParent(param1) {
+      //프로퍼티 생성
+      this.property1 = param1;
+    }
+
+    //매서드 정의
+    MyParent.prototype.method1 = function() {
+      console.log("MyParent.method1(): "+this.property1);
+    }
+
+    //자식클래스 정의
+    //매개변수 1개를 받는 생성자
+    function MyChild(param1){
+      //부모클래스의 매개변수가 있는 생성자 호출 코드
+      //매개변수 첫 번째는 자식클래스의 인스턴스를 전달
+      //두 번째 매개변수부터는 값을 전달
+
+      //가장 중요한 개념은 상속관계에 있다면, 부모클래스의 인스턴스가 먼저 생성되고
+      //그 후에 자식클래스의 생성자가 호출되어 인스턴스가 만들어지면 부모클래스 인스턴스에 추가된다.
+      MyParent.call(this, param1)
+    }
+
+    MyChild.prototype = new MyParent();
+
+    //인스턴스 생성
+    var child = new MyChild("신은혁");
+    console.log("child.property1: "+child.property1)
+    child.method1();
+    
+
+  </script>
+</head>
+
+<body>
+  
+</body>
+</html>
